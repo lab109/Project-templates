@@ -1,5 +1,5 @@
 # НАСТРОЙКИ CMAKE
-cmake_minimum_required(VERSION 3.29 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.28 FATAL_ERROR)
 
 # Экспортировать комманды компилятора, если проект имеет статус "Debug"
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -7,15 +7,16 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif()
 
 # Папки для вывода таргетов проекта
-#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # =============================================
 
 # Настройки проекта
 
-project(project_name LANGUAGES C)
+project(project_name LANGUAGES CXX)
 
 # Подключение директории с исходным кодом
 target_include_directories(
@@ -25,9 +26,9 @@ target_include_directories(
 
 set_target_properties(
     project_name
-    PROPERTIES C_STANDARD 17
-               C_STANDARD_REQUIRED on
-               C_EXTENSIONS off
+    PROPERTIES CXX_STANDARD 20
+               CXX_STANDARD_REQUIRED on
+               CXX_EXTENSIONS off
 )
 # =============================================
 # Добавление поддиректорий и сторонних библиотек
